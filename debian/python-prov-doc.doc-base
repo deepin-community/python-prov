@@ -1,0 +1,9 @@
+Document: python-prov-doc
+Title: prov Documentation
+Author: Trung Dong Huynh
+Abstract: This is the reference documentation of the prov Python library.
+Section: Programming
+
+Format: HTML
+Index: /usr/share/doc/python-prov-doc/html/index.html
+Files: /usr/share/doc/python-prov-doc/html/*.html

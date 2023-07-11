@@ -1,5 +1,136 @@
-template-repository (1.0-1) unstable; urgency=medium
+python-prov (2.0.0-2) unstable; urgency=medium
 
-  * Initial release
+  * add patch cherry-picked upstream
+    to ensure rdflib 6+ returns bytes when serializing tests;
+    closes: bug#1006536, thanks to Nilesh Patra
+  * add patch cherry-picked upstream
+    to raise an exception
+    when an empty URI is registered as a namespace
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Jonas Smedegaard <dr@jones.dk>  Sun, 27 Feb 2022 12:26:23 +0100
+
+python-prov (2.0.0-1) unstable; urgency=medium
+
+  * update watch file:
+    + track Github source
+    + add filenamemangle
+    + set dversionmangle=auto
+    + drop unused uversionmangle
+    + add usage comment
+  * update copyright info:
+    + update Source and Upstream-Contact URIs to track Github source
+    + update coverage
+    + use Reference field (not License-Reference)
+    + add related lintian overrides
+  * add git-buildpackage config:
+    + filter-out any .git* file
+    + use DEP14 branch naming scheme
+    + drop unused options stating defaults
+    + add usage comment
+  * stop build-depend on python3-six
+  * stop build-depend on dpkg-dev,
+    and relax to build-depend unversioned on python3-rdflib:
+    required versions satisfied in all supported Debian releases
+  * use semantic newlines in long description and copyright fields
+  * drop patch 120 applied upstream
+  * update DEP-3 headers and renumber remaining patch;
+    add file debian/patches/README to source,
+    documenting patch naming micro-policy
+
+ -- Jonas Smedegaard <dr@jones.dk>  Mon, 20 Dec 2021 16:04:12 +0100
+
+python-prov (1.5.2-3) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * set upstream metadata fields:
+    Bug-Database Repository Repository-Browse
+
+  [ Ondřej Nový ]
+  * update Maintainer field: use new Debian Python Team contact address
+  * update Vcs-* fields: use new Debian Python Team Salsa layout
+
+  [ Jonas Smedegaard ]
+  * add myself as uploader
+  * use debhelper compatibility level 12 (not 10);
+    build-depend on dh-sequence-python3 dh-sequence-sphinxdoc
+    (not dh-python sphinx-common)
+  * declare compliance with Debian Policy 4.6.0
+  * set Rules-Requires-Root: no
+  * add source helper script copyright-check
+
+ -- Jonas Smedegaard <dr@jones.dk>  Mon, 20 Dec 2021 14:06:24 +0100
+
+python-prov (1.5.2-2) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Ondřej Nový ]
+  * Use debhelper-compat instead of debian/compat.
+
+  [ Andrey Rahmatullin ]
+  * Drop Python 2 support.
+
+ -- Andrey Rahmatullin <wrar@debian.org>  Thu, 22 Aug 2019 23:03:35 +0500
+
+python-prov (1.5.2-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/control: Set Vcs-* to salsa.debian.org
+  * d/control: Remove ancient X-Python-Version field
+  * d/control: Remove ancient X-Python3-Version field
+
+  [ Gianfranco Costamagna ]
+  * Team upload
+  * debian/patches/120.patch:
+    - upstream PR to fix encoding error with python2.7
+  * New upstream version 1.5.2
+    (Closes: #880402, Closes: #897461, Closes: #897195)
+  * Follow upstream change, move from pydotplus to pydot
+  * Update copyright file
+  * Bump std-versiont o 4.1.4, no changes required
+  * Patch refresh
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Wed, 27 Jun 2018 13:55:29 +0200
+
+python-prov (1.5.0-2) unstable; urgency=medium
+
+  * fixup number of previously closed bug
+  * Upgrade watch file to version 4
+  * Switch from git-dpm to gbp
+  * Build the docs with Python 3
+  * Build the docs using the upstream Makefile
+  * Add support for the nodoc build profile
+  * Mark doc package multiarch foreign
+  * Add missing Built-Using metadata
+  * Normalize the Vcs-Browser URI
+  * Bump standards version to 4.0.0
+  * Run autopkgtests for all supported Python versions
+  * Drop binary-without-manpage lintian override
+  * Normalize the package descriptions
+  * Remove privacy breaching content in docs
+    - New patch No-privacy-breach.patch
+
+ -- Ghislain Antony Vaillant <ghisvail@gmail.com>  Tue, 18 Jul 2017 10:30:32 +0100
+
+python-prov (1.5.0-1) unstable; urgency=medium
+
+  * new upstream release. (Closes: #842661)
+  * switch to git-dpm
+  * add build dependency on rdflib
+  * upgrade packaging to debhelper 10
+  * drop superfluous Testsuite field
+  * simplify the packaging testsuite
+  * remove superfluous gbp.conf file
+  * move prov-tools to utils section
+  * drop versioned dependency on networkx.
+    Thanks to Yaroslav Halchenko
+  * update proxy settings according to the Python library style guide.
+    Thanks to Yaroslav Halchenko
+
+ -- Ghislain Antony Vaillant <ghisvail@gmail.com>  Mon, 19 Dec 2016 20:38:15 +0000
+
+python-prov (1.4.0-1) unstable; urgency=low
+
+  * Initial release. (Closes: #823436)
+
+ -- Ghislain Antony Vaillant <ghisvail@gmail.com>  Fri, 22 Jul 2016 20:15:34 +0100

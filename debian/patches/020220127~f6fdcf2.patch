@@ -1,0 +1,27 @@
+Description: Raise an exception when an empty URI is registered as a namespace
+Origin: upstream, https://github.com/trungdong/prov/commit/f6fdcf2
+Bugs: https://github.com/trungdong/prov/issues/142
+Author: Trung Dong Huynh <trungdong@donggiang.com>
+Last-Update: 2022-02-27
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/src/prov/identifier.py
++++ b/src/prov/identifier.py
+@@ -82,13 +82,15 @@
+ class Namespace(object):
+     """PROV Namespace."""
+ 
+-    def __init__(self, prefix, uri):
++    def __init__(self, prefix: str, uri: str):
+         """
+         Constructor.
+ 
+         :param prefix: String short hand prefix for the namespace.
+-        :param uri: URI string for the long namespace identifier.
++        :param uri: URI string for the long namespace identifier (cannot be blank).
+         """
++        if not uri or uri.isspace():
++            raise ValueError("Not a valid URI to create a namespace.")
+         self._prefix = prefix
+         self._uri = uri
+         self._cache = dict()

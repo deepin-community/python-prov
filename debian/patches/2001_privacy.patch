@@ -1,0 +1,38 @@
+Description: avoid privacy breach
+Author: Ghislain Antony Vaillant <ghisvail@gmail.com>
+Forwarded: not-needed
+Last-Update: 2021-12-20
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/README.rst
++++ b/README.rst
+@@ -3,29 +3,6 @@
+ ============
+ 
+ 
+-.. image:: https://badge.fury.io/py/prov.svg
+-  :target: http://badge.fury.io/py/prov
+-  :alt: Latest Release
+-.. image:: https://travis-ci.org/trungdong/prov.svg
+-  :target: https://travis-ci.org/trungdong/prov
+-  :alt: Build Status
+-.. image:: https://img.shields.io/coveralls/trungdong/prov.svg
+-  :target: https://coveralls.io/r/trungdong/prov?branch=master
+-  :alt: Coverage Status
+-.. image:: https://landscape.io/github/trungdong/prov/master/landscape.svg?style=flat
+-  :target: https://landscape.io/github/trungdong/prov/master
+-  :alt: Code Health
+-.. image:: https://img.shields.io/pypi/wheel/prov.svg
+-  :target: https://pypi.python.org/pypi/prov/
+-  :alt: Wheel Status
+-.. image:: https://img.shields.io/pypi/pyversions/prov.svg
+-  :target: https://pypi.python.org/pypi/prov/
+-  :alt: Supported Python version
+-.. image:: https://img.shields.io/pypi/l/prov.svg
+-  :target: https://pypi.python.org/pypi/prov/
+-  :alt: License
+-
+-
+ A library for W3C Provenance Data Model supporting PROV-O (RDF), PROV-XML, PROV-JSON import/export
+ 
+ * Free software: MIT license

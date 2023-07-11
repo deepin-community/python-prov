@@ -1,0 +1,41 @@
+Description: Ensure rdflib 6+ returns bytes when serializing tests
+Origin: upstream, https://github.com/trungdong/prov/commit/0b6b73bd
+Bugs: https://github.com/trungdong/prov/issues/151
+Author: Trung Dong Huynh <trungdong@donggiang.com>
+Last-Update: 2022-02-27
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/src/prov/tests/test_rdf.py
++++ b/src/prov/tests/test_rdf.py
+@@ -24,8 +24,8 @@
+ def find_diff(g_rdf, g0_rdf):
+     graphs_equal = True
+     in_both, in_first, in_second = graph_diff(g_rdf, g0_rdf)
+-    g1 = sorted(in_first.serialize(format="nt").splitlines())[1:]
+-    g2 = sorted(in_second.serialize(format="nt").splitlines())[1:]
++    g1 = sorted(in_first.serialize(format="nt", encoding="utf-8").splitlines())[1:]
++    g2 = sorted(in_second.serialize(format="nt", encoding="utf-8").splitlines())[1:]
+     # Compare literals
+     if len(g1) != len(g2):
+         graphs_equal = False
+@@ -285,7 +285,8 @@
+                     rdf_format=format,
+                 )
+             except Exception as e:
+-                errors.append((e, idx, fname, in_first, in_second))
++                raise e;
++                # errors.append((e, idx, fname, in_first, in_second))
+         self.assertFalse(errors)
+ 
+ 
+--- a/tox.ini
++++ b/tox.ini
+@@ -16,7 +16,7 @@
+ setenv =
+     PYTHONPATH = {toxinidir}:{toxinidir}/src/prov
+ commands =
+-    check-manifest --ignore 'tox.ini,.coveragerc,.editorconfig,tests/**,cla/**,requirements*.txt,Makefile'
++    check-manifest --ignore 'tox.ini,.coveragerc,.editorconfig,tests/**,cla/**,requirements*.txt,Makefile,.readthedocs.yml'
+     python setup.py check -m -r -s
+     python setup.py test
+ deps =

@@ -7,7 +7,6 @@ PROV-DM: http://www.w3.org/TR/prov-dm/
 PROV-JSON: https://openprovenance.org/prov-json/
 """
 from collections import defaultdict
-from copy import deepcopy
 import datetime
 import io
 import itertools
@@ -243,7 +242,7 @@ class ProvRecord(object):
         """
         self._bundle = bundle
         self._identifier = identifier
-        self._attributes = defaultdict(set)
+        self._attributes: dict[QualifiedName, set] = defaultdict(set)
         if attributes:
             self.add_attributes(attributes)
 
@@ -274,12 +273,13 @@ class ProvRecord(object):
         """
         self._attributes[PROV_TYPE].add(type_identifier)
 
-    def get_attribute(self, attr_name):
+    def get_attribute(self, attr_name) -> set:
         """
         Returns the attribute of the given name.
 
         :param attr_name: Name of the attribute.
-        :return: Tuple (name, value)
+        :return: Set of value(s) of the specified attribute.
+        :rtype: set
         """
         attr_name = self._bundle.valid_qualified_name(attr_name)
         return self._attributes[attr_name]
@@ -1177,8 +1177,8 @@ class NamespaceManager(dict):
                     # reuse the existing namespace
                     new_qname = existing_ns[local_part]
             else:
-                # Do not reuse the namespace object
-                ns = self.add_namespace(deepcopy(namespace))
+                # Do not reuse the namespace object, making an identical copy
+                ns = self.add_namespace(Namespace(namespace.prefix, namespace.uri))
                 # minting the same Qualified Name from the namespace's copy
                 new_qname = ns[qname.localpart]
             # returning the new qname

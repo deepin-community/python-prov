@@ -8,13 +8,13 @@ here = pathlib.Path(__file__).parent.resolve()
 
 long_description = (here / "README.rst").read_text(encoding="utf-8")
 
-requirements = ["python-dateutil>=2.2", "networkx>=2.0", "lxml>=3.3.5", "rdflib>=4.2.1"]
+requirements = ["python-dateutil>=2.2", "networkx>=2.0", "lxml>=3.3.5", "rdflib>=4.2.1,<7"]
 
 test_requirements = ["pydot>=1.2.0"]
 
 setup(
     name="prov",
-    version="2.0.0",
+    version="2.0.1",
     description="A library for W3C Provenance Data Model supporting PROV-JSON, "
     "PROV-XML and PROV-O (RDF)",
     long_description=long_description,
@@ -57,10 +57,11 @@ setup(
         "Natural Language :: English",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3 :: Only",
         "Programming Language :: Python :: Implementation :: CPython",
         "Programming Language :: Python :: Implementation :: PyPy",
